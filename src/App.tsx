@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import {
-  Home, Smartphone, Wrench, IndianRupee, Users, PlusCircle,
+  Home, Smartphone, IndianRupee, Users, PlusCircle,
   Save, Search, ArrowLeft, ShoppingCart, Package, TrendingUp,
   TrendingDown, Clock, ChevronRight, RefreshCw, Trash2, Eye,
-  UserPlus, Receipt, Camera, Phone as PhoneIcon, MapPin, CreditCard,
-  FileText, X, Info, Edit, Lock, Unlock, CalendarDays, Percent, Send
+  UserPlus, Receipt, Phone as PhoneIcon, FileText, Lock, Unlock, Send
 } from 'lucide-react';
 import { supabase } from './lib/supabase';
 
