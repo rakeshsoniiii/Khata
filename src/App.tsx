@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react
 import {
   Home, Smartphone, IndianRupee, Users, PlusCircle,
   Save, Search, ArrowLeft, ShoppingCart, Package, TrendingUp,
-  TrendingDown, Clock, ChevronRight, RefreshCw, Trash2, Eye,
-  UserPlus, Receipt, Phone as PhoneIcon, FileText, Lock, Unlock, Send
+  TrendingDown, Clock, ChevronRight, RefreshCw, Trash2,
+  UserPlus, Receipt, FileText, Lock, Unlock, Send, Camera, X
 } from 'lucide-react';
 import { supabase } from './lib/supabase';
 
@@ -934,7 +934,7 @@ const DailyHisab = () => {
 const DailyNote = ({ date }: { date: string }) => {
   const [note, setNote] = useState('');
   const [saving, setSaving] = useState(false);
-  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const [timeoutId, setTimeoutId] = useState<any>(null);
 
   useEffect(() => {
     supabase.from('daily_notes').select('note').eq('date', date).single()
@@ -1412,7 +1412,7 @@ const GirwiList = () => {
       {loading ? <LoadingSpinner /> : filtered.length === 0 ? <EmptyState message="No girwi records" /> : (
         <div className="p-4 space-y-3">
           {filtered.map(g => {
-            const { elapsedDays, interest, total } = calcInterest(g);
+            const { elapsedDays, total } = calcInterest(g);
             const isActive = g.status === 'active';
             return (
               <div key={g.id} className={`bg-white rounded-2xl p-4 shadow-sm border ${
@@ -1617,7 +1617,6 @@ const AddGirwi = () => {
 // PAGE: GENERATE BILL
 // ===========================
 const GenerateBill = () => {
-  const navigate = useNavigate();
   const [form, setForm] = useState({
     date: new Date().toLocaleDateString('en-IN'),
     customerName: '',
